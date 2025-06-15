@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/"/>
+  </url>
+  
+  <!-- About Us Page with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/om-oss</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/om-oss"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/om-oss"/>
+  </url>
+  
+  <!-- Team Page with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/team</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/team"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/team"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/team"/>
+  </url>
+  
+  <!-- Services Page with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/services"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster"/>
+  </url>
+  
+  <!-- Gallery Page with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/galleri</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/galleri"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/gallery"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/gallery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/galleri"/>
+  </url>
+  
+  <!-- Contact Page with language alternatives -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://affessalong.axiestudio.se/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://affessalong.axiestudio.se/ar/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/kontakt"/>
+  </url>
+</urlset>

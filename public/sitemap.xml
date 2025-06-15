@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Main page -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/logo.png</image:loc>
+      <image:title>Affes Salong Logo</image:title>
+      <image:caption>Premium frisörsalong i Jönköping sedan 1991</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/hero-background.jpeg</image:loc>
+      <image:title>Affes Salong Hero Image</image:title>
+      <image:caption>Affes Salong interiör</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Section-specific URLs -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/om-oss</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/om-oss" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/om-oss" />
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/team</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/team" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/team" />
+    <image:image>
+      <image:loc>https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DB7553E4-8856-4C76-B3CC-700B3119C505-6325-0000043A697266E8.jpg-zAsnSlcoN5BPNAHFd4Um7QOtWGB09r.jpeg</image:loc>
+      <image:title>Fady - Frisör på Affes Salong</image:title>
+      <image:caption>Fady är expert på herrklippning och skäggvård</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hebbkx1anhila5yf.public.blob.vercel-storage.com/437A1D0F-5B16-47DC-9A33-079B830D638D-6325-0000043AAF1B22A7.jpg-3wJRhhKA2o05kDjduqLnPIrHLcsLAk.jpeg</image:loc>
+      <image:title>Adnan - Frisör på Affes Salong</image:title>
+      <image:caption>Adnan är specialist på moderna frisyrer</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster" />
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/galleri</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/galleri" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/galleri" />
+    <!-- Add image entries for each gallery image -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/gallery/client1.jpeg</image:loc>
+      <image:title>Herrklippning med fade hos Affes Salong i Jönköping</image:title>
+      <image:caption>Herrklippning med fade hos Affes Salong i Jönköping</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/gallery/client2.jpeg</image:loc>
+      <image:title>Stilig herrfrisyr från Affes Salong</image:title>
+      <image:caption>Stilig herrfrisyr från Affes Salong</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/kontakt</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/kontakt" />
+  </url>
+  
+  <!-- Hash URLs for sections -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/#om-oss</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/#team</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/#tjanster</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/#galleri</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://affessalong.axiestudio.se/#kontakt</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

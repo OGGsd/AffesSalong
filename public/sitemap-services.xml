@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Haircut and Beard Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#haircut-beard</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#haircut-beard"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#haircut-beard"/>
+  </url>
+  
+  <!-- Men's Haircut Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#haircut-men</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#haircut-men"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#haircut-men"/>
+  </url>
+  
+  <!-- Beard Shave Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#beard-shave</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#beard-shave"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#beard-shave"/>
+  </url>
+  
+  <!-- Beard Trim Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#beard-trim</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#beard-trim"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#beard-trim"/>
+  </url>
+  
+  <!-- Kids Haircut Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#haircut-kids</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#haircut-kids"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#haircut-kids"/>
+  </url>
+  
+  <!-- Buzz Cut Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#buzz-cut</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#buzz-cut"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#buzz-cut"/>
+  </url>
+  
+  <!-- Student Haircut and Beard Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#student-haircut-beard</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#student-haircut-beard"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#student-haircut-beard"/>
+  </url>
+  
+  <!-- Student Haircut Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#student-haircut</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#student-haircut"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#student-haircut"/>
+  </url>
+  
+  <!-- Student Beard Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#student-beard</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#student-beard"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#student-beard"/>
+  </url>
+  
+  <!-- Threading Service -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster#threading</loc>
+    <lastmod>2025-05-03T12:30:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="sv-se" href="https://affessalong.axiestudio.se/tjanster#threading"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://affessalong.axiestudio.se/tjanster#threading"/>
+  </url>
+</urlset>
