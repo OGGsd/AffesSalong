@@ -66,8 +66,8 @@ export default function HeroSection() {
         >
           <motion.button
             onClick={() => scrollToSection("tjanster")}
-            className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
+            className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors shadow-lg"
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
             whileTap={{ scale: 0.95 }}
           >
             Boka Tjänst
