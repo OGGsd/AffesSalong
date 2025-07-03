@@ -1,4 +1,4 @@
-import Image from "next/image"
+"use client"
 
 export default function AboutSection() {
   const scrollToSection = (sectionId: string) => {
@@ -13,19 +13,16 @@ export default function AboutSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Hos Oss På Affes Salong</h2>
-          <div className="w-16 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <div className="w-16 h-1 bg-amber-600 mx-auto mb-6"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <div className="relative w-64 h-64 mb-6">
-              <Image
+              <img
                 src="/images/logo.png"
                 alt="Affes Salong Logo"
-                fill
-                className="object-contain"
-                sizes="256px"
-                priority
+                className="w-full h-full object-contain"
               />
             </div>
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">Affes Salong</h3>
@@ -99,7 +96,7 @@ export default function AboutSection() {
             <div className="flex gap-4">
               <button
                 onClick={() => scrollToSection("tjanster")}
-                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded transition-colors"
               >
                 Se Våra Tjänster
               </button>

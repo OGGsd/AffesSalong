@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 
 interface GalleryImage {
   src: string
@@ -27,7 +26,7 @@ export default function GallerySection({ images }: GallerySectionProps) {
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">
             Utforska Vår Värld av Skönhet och Stil
           </h2>
-          <div className="w-16 sm:w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <div className="w-16 sm:w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Bläddra genom vårt galleri för att se exempel på vårt arbete och hitta inspiration till din nästa look.
           </p>
@@ -37,16 +36,14 @@ export default function GallerySection({ images }: GallerySectionProps) {
           {images.slice(0, visibleImages).map((image, index) => (
             <div 
               key={index} 
-              className="aspect-[3/4] w-full cursor-pointer"
+              className="aspect-3-4 w-full cursor-pointer"
               onClick={() => setSelectedImage(image)}
             >
               <div className="relative h-full w-full overflow-hidden rounded-lg hover:opacity-90 transition-opacity">
-                <Image
+                <img
                   src={image.src}
                   alt={image.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -57,7 +54,7 @@ export default function GallerySection({ images }: GallerySectionProps) {
           <div className="mt-8 sm:mt-12 flex justify-center">
             <button
               onClick={loadMoreImages}
-              className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded font-medium"
+              className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded font-medium transition-colors"
             >
               Visa Mer ({images.length - visibleImages} kvar)
             </button>
@@ -67,24 +64,21 @@ export default function GallerySection({ images }: GallerySectionProps) {
         {/* Simple Lightbox */}
         {selectedImage && (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            className="fixed inset-0 z-1000 flex items-center justify-center bg-black bg-opacity-80 p-4"
             onClick={() => setSelectedImage(null)}
           >
             <button
-              className="absolute top-4 right-4 text-white text-2xl"
+              className="absolute top-4 right-4 text-white text-2xl bg-black bg-opacity-50 w-12 h-12 rounded-full flex items-center justify-center"
               onClick={() => setSelectedImage(null)}
               aria-label="Stäng"
             >
               ×
             </button>
-            <div className="relative max-h-[90vh] max-w-[90vw]">
-              <Image
+            <div className="relative max-h-full max-w-full">
+              <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                width={800}
-                height={600}
-                className="h-auto max-h-[90vh] w-auto max-w-[90vw] object-contain"
-                priority
+                className="max-h-screen max-w-screen object-contain"
               />
             </div>
           </div>

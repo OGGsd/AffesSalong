@@ -1,3 +1,5 @@
+"use client"
+
 export default function ContactSection() {
   const scrollToServices = () => {
     const servicesSection = document.getElementById("tjanster")
@@ -13,7 +15,7 @@ export default function ContactSection() {
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">
             Kontakt & Öppettider
           </h2>
-          <div className="w-16 sm:w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <div className="w-16 sm:w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Kontakta oss för bokning eller frågor. Vi ser fram emot ditt besök hos Affes Salong.
           </p>
@@ -77,7 +79,7 @@ export default function ContactSection() {
                   <h4 className="font-medium text-lg mb-1">Boka Online</h4>
                   <button
                     onClick={scrollToServices}
-                    className="mt-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded"
+                    className="mt-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded transition-colors"
                   >
                     Boka Tid Nu
                   </button>
@@ -122,7 +124,7 @@ export default function ContactSection() {
         </div>
 
         {/* Google Map */}
-        <div className="mt-8 h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
+        <div className="mt-8 h-96 w-full overflow-hidden rounded-xl shadow-lg">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2093.6261490225455!2d14.165512651902933!3d57.778882992884576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6df5d2664c23%3A0xe71886a9f057cc0!2sBarnarpsgatan%2031%2C%20553%2033%20J%C3%B6nk%C3%B6ping!5e0!3m2!1ssv!2sse!4v1724351272308!5m2!1ssv!2sse"
             width="100%"
@@ -130,7 +132,6 @@ export default function ContactSection() {
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
             title="Affes Salong karta"
           ></iframe>
         </div>
