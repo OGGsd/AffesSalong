@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: false,
+  swcMinify: true,
   experimental: {
     forceSwcTransforms: false,
   },
   compiler: {
-    removeConsole: false,
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   images: {
     unoptimized: true,
@@ -25,11 +25,6 @@ const nextConfig = {
       crypto: false,
     };
     
-    // Disable SWC minification completely
-    if (!isServer) {
-      config.optimization.minimize = false;
-    }
-    
     return config;
   },
   eslint: {
@@ -38,6 +33,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
 };
 
 module.exports = nextConfig;

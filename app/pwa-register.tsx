@@ -52,36 +52,13 @@ export default function PWARegister() {
       window.addEventListener('appinstalled', () => {
         console.log('PWA: App installed successfully')
         deferredPrompt = null
-        
-        // Track install event
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'pwa_install', {
-            event_category: 'PWA',
-            event_label: 'App Installed'
-          })
-        }
       })
-
-      // Register for push notifications (optional)
-      if ('Notification' in window && 'PushManager' in window) {
-        // Request notification permission
-        Notification.requestPermission().then((permission) => {
-          console.log('PWA: Notification permission:', permission)
-        })
-      }
 
       // Handle online/offline events
       window.addEventListener('online', () => {
         console.log('PWA: App is online')
         document.body.classList.remove('offline')
         document.body.classList.add('online')
-        
-        // Sync any pending data
-        if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
-          navigator.serviceWorker.ready.then((registration) => {
-            return registration.sync.register('background-sync')
-          })
-        }
       })
 
       window.addEventListener('offline', () => {
@@ -146,11 +123,12 @@ export default function PWARegister() {
     const dismissBtn = document.getElementById('dismiss-btn')
     
     installBtn?.addEventListener('click', async () => {
+      const deferredPrompt = (window as any).deferredPrompt
       if (deferredPrompt) {
         deferredPrompt.prompt()
         const { outcome } = await deferredPrompt.userChoice
         console.log('PWA: Install prompt outcome:', outcome)
-        deferredPrompt = null
+        ;(window as any).deferredPrompt = null
       }
       installBanner.remove()
     })
