@@ -1,4 +1,4 @@
-import ParallaxHero from "@/components/parallax-hero"
+import dynamic from "next/dynamic"
 import ServicesSection from "@/components/services-section"
 import GallerySection from "@/components/gallery-section"
 import ContactSection from "@/components/contact-section"
@@ -35,6 +35,27 @@ import ImageOptimization from "@/components/seo/image-optimization"
 import PerformanceOptimization from "@/components/seo/performance-optimization"
 import MobileOptimization from "@/components/seo/mobile-optimization"
 import AnalyticsIntegration from "@/components/seo/analytics-integration"
+
+// Dynamically import ParallaxHero to prevent SSR hydration issues
+const ParallaxHero = dynamic(() => import("@/components/parallax-hero"), {
+  ssr: false,
+  loading: () => (
+    <section className="relative h-[85vh] w-full overflow-hidden bg-gray-900">
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 z-10" />
+      <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+        <div className="mb-2 tracking-wider text-amber-300 font-medium text-sm sm:text-base">
+          Premium Barber Shop
+        </div>
+        <h1 className="mb-4 text-3xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+          Affes Salong – Est. 1991
+        </h1>
+        <p className="mb-8 sm:mb-10 max-w-2xl text-lg sm:text-xl md:text-2xl">
+          Din Premium Salon för Skräddarsydda Lösningar
+        </p>
+      </div>
+    </section>
+  ),
+})
 
 // Define the services and gallery images outside the component
 // to avoid any rendering issues

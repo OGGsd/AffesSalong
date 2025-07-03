@@ -63,6 +63,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Header scroll state styles to prevent hydration issues */
+.header-scrolled header {
+  @apply bg-white border-b shadow-sm;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

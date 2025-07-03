@@ -21,6 +21,17 @@ export default function Header() {
     setIsMounted(true)
   }, [])
 
+  // Apply scroll-based styling to document element to avoid hydration issues
+  useEffect(() => {
+    if (isMounted) {
+      if (scrolled) {
+        document.documentElement.classList.add('header-scrolled')
+      } else {
+        document.documentElement.classList.remove('header-scrolled')
+      }
+    }
+  }, [scrolled, isMounted])
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
@@ -80,9 +91,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "bg-white border-b shadow-sm" : "bg-transparent"
-      }`}
+      className="sticky top-0 z-50 w-full transition-all duration-300 bg-transparent"
       suppressHydrationWarning
     >
       <div className="container mx-auto flex h-16 sm:h-20 items-center justify-between px-4 md:px-6">
@@ -100,9 +109,7 @@ export default function Header() {
                 />
               </div>
               <span
-                className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${
-                  isMounted && scrolled ? "text-gray-900" : "text-white"
-                }`}
+                className="text-lg sm:text-xl font-bold transition-colors duration-300 text-white header-scrolled:text-gray-900"
                 suppressHydrationWarning
               >
                 Affes Salong
@@ -115,45 +122,35 @@ export default function Header() {
         <nav className="hidden md:flex md:items-center md:space-x-4 lg:space-x-6">
           <button
             onClick={(e) => scrollToSection(e, "om-oss")}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
-            }`}
+            className="text-sm font-medium transition-colors duration-300 text-white hover:text-amber-300 header-scrolled:text-gray-900 header-scrolled:hover:text-amber-600"
             suppressHydrationWarning
           >
             Hos Oss
           </button>
           <button
             onClick={(e) => scrollToSection(e, "team")}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
-            }`}
+            className="text-sm font-medium transition-colors duration-300 text-white hover:text-amber-300 header-scrolled:text-gray-900 header-scrolled:hover:text-amber-600"
             suppressHydrationWarning
           >
             Team
           </button>
           <button
             onClick={(e) => scrollToSection(e, "tjanster")}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
-            }`}
+            className="text-sm font-medium transition-colors duration-300 text-white hover:text-amber-300 header-scrolled:text-gray-900 header-scrolled:hover:text-amber-600"
             suppressHydrationWarning
           >
             Tjänster
           </button>
           <button
             onClick={(e) => scrollToSection(e, "galleri")}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
-            }`}
+            className="text-sm font-medium transition-colors duration-300 text-white hover:text-amber-300 header-scrolled:text-gray-900 header-scrolled:hover:text-amber-600"
             suppressHydrationWarning
           >
             Galleri
           </button>
           <button
             onClick={(e) => scrollToSection(e, "kontakt")}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
-            }`}
+            className="text-sm font-medium transition-colors duration-300 text-white hover:text-amber-300 header-scrolled:text-gray-900 header-scrolled:hover:text-amber-600"
             suppressHydrationWarning
           >
             Kontakt
@@ -171,9 +168,7 @@ export default function Header() {
         <div className="flex items-center space-x-2 md:hidden">
           <Link
             href="tel:036-123786"
-            className={`p-2 rounded-full ${
-              isMounted && scrolled ? "bg-amber-600 text-white" : "bg-white/20 backdrop-blur-sm text-white"
-            }`}
+            className="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white header-scrolled:bg-amber-600 header-scrolled:text-white"
             aria-label="Ring oss"
             suppressHydrationWarning
           >
@@ -182,7 +177,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className={`md:hidden ${isMounted && scrolled ? "text-gray-900" : "text-white"}`}
+            className="md:hidden text-white header-scrolled:text-gray-900"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Stäng meny" : "Öppna meny"}
             suppressHydrationWarning
