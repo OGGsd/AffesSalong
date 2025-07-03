@@ -1,4 +1,4 @@
-import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals'
+import * as webVitals from 'web-vitals'
 
 // Types for analytics events
 interface AnalyticsEvent {
@@ -72,11 +72,11 @@ export function initWebVitals() {
   if (typeof window === 'undefined') return
 
   try {
-    onCLS(sendToAnalytics)
-    onFID(sendToAnalytics)
-    onFCP(sendToAnalytics)
-    onLCP(sendToAnalytics)
-    onTTFB(sendToAnalytics)
+    webVitals.onCLS(sendToAnalytics)
+    webVitals.onFID(sendToAnalytics)
+    webVitals.onFCP(sendToAnalytics)
+    webVitals.onLCP(sendToAnalytics)
+    webVitals.onTTFB(sendToAnalytics)
   } catch (error) {
     if (ANALYTICS_CONFIG.debug) {
       console.error('Web Vitals initialization failed:', error)
