@@ -1,4 +1,4 @@
-import Image from "next/image"
+"use client"
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -9,19 +9,15 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative h-[85vh] w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
-        <Image
+        <img
           src="/images/hero-background.jpeg"
           alt="Affes Salong"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          quality={90}
+          className="w-full h-full object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black from-black/60 to-black/40" />
       <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
         <div className="mb-2 tracking-wider text-amber-300 font-medium text-sm sm:text-base">
           Premium Barber Shop
@@ -35,13 +31,13 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={() => scrollToSection("tjanster")}
-            className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded font-medium"
+            className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded font-medium transition-colors"
           >
             Boka Tjänst
           </button>
           <button
             onClick={() => scrollToSection("galleri")}
-            className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-3 rounded font-medium"
+            className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-3 rounded font-medium transition-colors"
           >
             Se Vår Galleri
           </button>

@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 export default function TeamSection() {
   const teamMembers = [
     {
@@ -33,7 +31,7 @@ export default function TeamSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">Vårt Professionella Team</h2>
-          <div className="w-16 sm:w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <div className="w-16 sm:w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Möt våra erfarna stylister som är dedikerade till att ge dig den perfekta looken.
           </p>
@@ -44,13 +42,10 @@ export default function TeamSection() {
             <div key={index} className="group">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
                 <div className="relative h-72 sm:h-80 w-full overflow-hidden">
-                  <Image
+                  <img
                     src={member.image}
                     alt={`${member.name} - Frisör på Affes Salong i Jönköping`}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    priority
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 <div className="p-4 sm:p-6 text-center">

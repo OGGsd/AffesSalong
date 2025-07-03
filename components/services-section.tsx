@@ -37,7 +37,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Våra Tjänster</h2>
-          <div className="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Vi erbjuder ett brett utbud av professionella tjänster för att möta dina behov.
           </p>
@@ -92,7 +92,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                   href={service.bookingLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded font-medium"
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded font-medium transition-colors"
                 >
                   Boka Nu
                 </a>
