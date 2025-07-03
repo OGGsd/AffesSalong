@@ -36,22 +36,17 @@ export default function PWARegister() {
         window.location.reload()
       })
 
-      // Handle app install prompt
-      let deferredPrompt: any = null
-      
+      // Prevent the default install prompt from showing
       window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('PWA: Install prompt triggered')
+        console.log('PWA: Install prompt prevented')
         e.preventDefault()
-        deferredPrompt = e
-        
-        // Show custom install button or banner
-        showInstallPrompt()
+        // Don't store the event or show any custom prompt
+        return false
       })
 
-      // Handle successful app install
+      // Handle successful app install (if user installs manually)
       window.addEventListener('appinstalled', () => {
         console.log('PWA: App installed successfully')
-        deferredPrompt = null
       })
 
       // Handle online/offline events
@@ -68,82 +63,6 @@ export default function PWARegister() {
       })
     }
   }, [])
-
-  const showInstallPrompt = () => {
-    // Create a subtle install prompt
-    const installBanner = document.createElement('div')
-    installBanner.innerHTML = `
-      <div style="
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
-        background: #d97706;
-        color: white;
-        padding: 16px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: system-ui, sans-serif;
-      ">
-        <div>
-          <div style="font-weight: 600; margin-bottom: 4px;">Installera Affes Salong</div>
-          <div style="font-size: 14px; opacity: 0.9;">Få snabb åtkomst till bokning och tjänster</div>
-        </div>
-        <div>
-          <button id="install-btn" style="
-            background: white;
-            color: #d97706;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-right: 8px;
-            cursor: pointer;
-          ">Installera</button>
-          <button id="dismiss-btn" style="
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-          ">Senare</button>
-        </div>
-      </div>
-    `
-    
-    document.body.appendChild(installBanner)
-    
-    // Handle install button click
-    const installBtn = document.getElementById('install-btn')
-    const dismissBtn = document.getElementById('dismiss-btn')
-    
-    installBtn?.addEventListener('click', async () => {
-      const deferredPrompt = (window as any).deferredPrompt
-      if (deferredPrompt) {
-        deferredPrompt.prompt()
-        const { outcome } = await deferredPrompt.userChoice
-        console.log('PWA: Install prompt outcome:', outcome)
-        ;(window as any).deferredPrompt = null
-      }
-      installBanner.remove()
-    })
-    
-    dismissBtn?.addEventListener('click', () => {
-      installBanner.remove()
-    })
-    
-    // Auto-dismiss after 10 seconds
-    setTimeout(() => {
-      if (document.body.contains(installBanner)) {
-        installBanner.remove()
-      }
-    }, 10000)
-  }
 
   return null
 }
