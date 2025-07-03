@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function OfflinePage() {
@@ -18,7 +17,7 @@ export default function OfflinePage() {
       </div>
       <div className="mt-8">
         <Button asChild>
-          <Link href="/">Gå till startsidan</Link>
+          <a href="/">Gå till startsidan</a>
         </Button>
       </div>
       <div className="mt-12">

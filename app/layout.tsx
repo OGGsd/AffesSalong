@@ -1,78 +1,17 @@
-import type React from "react"
-import "./globals.css"
-import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import Script from "next/script"
-import Header from "@/components/header"
-import CanonicalURL from "@/components/seo/canonical-url"
-import AdvancedMetaTags from "@/components/seo/advanced-meta-tags"
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "Affes Salong - Premium Frisörsalong i Jönköping sedan 1991",
-  description:
-    "Affes Salong erbjuder professionell herrklippning, skäggtrimning och styling i Jönköping. Boka tid online eller besök oss på Barnarpsgatan 31.",
-  keywords: "frisör, herrfrisör, skäggtrimning, Jönköping, herrklippning, barberare, rakning, styling",
-  authors: [{ name: "Affes Salong" }],
-  creator: "Affes Salong",
-  publisher: "Affes Salong",
+export const metadata = {
+  title: 'Affes Salong - Premium Frisörsalong i Jönköping sedan 1991',
+  description: 'Affes Salong erbjuder professionell herrklippning, skäggtrimning och styling i Jönköping. Boka tid online eller besök oss på Barnarpsgatan 31.',
+  keywords: 'frisör, herrklippning, skägg, Jönköping, barber, styling, premium, salong',
+  authors: [{ name: 'Affes Salong' }],
+  creator: 'Affes Salong',
+  publisher: 'Affes Salong',
   formatDetection: {
     email: false,
-    address: true,
-    telephone: true,
+    address: false,
+    telephone: false,
   },
-  alternates: {
-    canonical: "https://affessalong.axiestudio.se",
-  },
-  openGraph: {
-    title: "Affes Salong - Premium Frisörsalong i Jönköping",
-    description:
-      "Professionell herrklippning, skäggtrimning och styling i Jönköping. Boka tid online eller besök oss på Barnarpsgatan 31.",
-    url: "https://affessalong.axiestudio.se",
-    siteName: "Affes Salong",
-    images: [
-      {
-        url: "https://affessalong.axiestudio.se/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Affes Salong - Premium Frisörsalong i Jönköping",
-      },
-    ],
-    locale: "sv_SE",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Affes Salong - Premium Frisörsalong i Jönköping",
-    description:
-      "Professionell herrklippning, skäggtrimning och styling i Jönköping. Boka tid online eller besök oss på Barnarpsgatan 31.",
-    images: ["https://affessalong.axiestudio.se/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  category: "beauty",
-    generator: 'v0.dev'
-}
-
-export const viewport: Viewport = {
-  themeColor: "#f59e0b",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  viewportFit: "cover",
 }
 
 export default function RootLayout({
@@ -81,20 +20,41 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="sv" className="scroll-smooth">
+    <html lang="sv">
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* PWA Meta Tags */}
+        <meta name="application-name" content="Affes Salong" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <CanonicalURL />
-        <AdvancedMetaTags />
+        <meta name="apple-mobile-web-app-title" content="Affes Salong" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="msapplication-TileColor" content="#d97706" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="theme-color" content="#d97706" />
+
+        {/* Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
+
+        {/* Icons */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://www.bokadirekt.se" />
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+
+        {/* DNS Prefetch */}
+        <link rel="dns-prefetch" href="//www.bokadirekt.se" />
+        <link rel="dns-prefetch" href="//www.google.com" />
+        <link rel="dns-prefetch" href="//www.instagram.com" />
       </head>
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Script src="/js/app.js" strategy="lazyOnload" />
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

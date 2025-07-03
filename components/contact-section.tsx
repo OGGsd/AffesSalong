@@ -1,38 +1,7 @@
 "use client"
 
-import type React from "react"
-
-import { motion } from "framer-motion"
-import { Clock, MapPin, Phone, Mail, Calendar, Instagram } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useDeviceDetection } from "./responsive-utils"
-
 export default function ContactSection() {
-  const deviceType = useDeviceDetection()
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
-
-  // Smooth scroll function
-  const scrollToServices = (e: React.MouseEvent) => {
-    e.preventDefault()
+  const scrollToServices = () => {
     const servicesSection = document.getElementById("tjanster")
     if (servicesSection) {
       servicesSection.scrollIntoView({ behavior: "smooth" })
@@ -42,223 +11,129 @@ export default function ContactSection() {
   return (
     <section id="kontakt" className="py-16 sm:py-20 md:py-24 px-4 md:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-          className="text-center mb-10 sm:mb-16"
-        >
-          <div className="flex justify-center mb-3">
-            <div className="bg-amber-500 p-2 sm:p-3 rounded-full">
-              <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-            </div>
-          </div>
-          <motion.h2 variants={itemVariants} className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">
             Kontakt & Öppettider
-          </motion.h2>
-          <div className="w-16 sm:w-20 h-1 bg-amber-500 mx-auto mb-4 sm:mb-6"></div>
-          <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          </h2>
+          <div className="w-16 sm:w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Kontakta oss för bokning eller frågor. Vi ser fram emot ditt besök hos Affes Salong.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        {/* Main content with contact info and opening hours first */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
-          {/* Contact Information Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 bg-white rounded-xl shadow-lg p-6 sm:p-8"
-          >
-            <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 flex items-center">
-              <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600 mr-2" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Contact Information */}
+          <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-6 flex items-center">
+              <svg className="h-6 w-6 text-amber-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
               Hitta oss
             </h3>
 
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-amber-100 p-2 sm:p-3 rounded-lg mr-4 flex-shrink-0">
-                  <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
+                <div className="bg-amber-100 p-3 rounded-lg mr-4">
+                  <svg className="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-base sm:text-lg mb-1">Adress</h4>
-                  <p className="text-gray-600 text-sm sm:text-base">Barnarpsgatan 31, 55316, Jönköping</p>
+                  <h4 className="font-medium text-lg mb-1">Adress</h4>
+                  <p className="text-gray-600">Barnarpsgatan 31, 55316, Jönköping</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-amber-100 p-2 sm:p-3 rounded-lg mr-4 flex-shrink-0">
-                  <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
+                <div className="bg-amber-100 p-3 rounded-lg mr-4">
+                  <svg className="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-base sm:text-lg mb-1">Telefon</h4>
-                  <p className="text-gray-600 text-sm sm:text-base">036-123786</p>
+                  <h4 className="font-medium text-lg mb-1">Telefon</h4>
+                  <p className="text-gray-600">036-123786</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-amber-100 p-2 sm:p-3 rounded-lg mr-4 flex-shrink-0">
-                  <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
+                <div className="bg-amber-100 p-3 rounded-lg mr-4">
+                  <svg className="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-base sm:text-lg mb-1">Email</h4>
-                  <p className="text-gray-600 text-sm sm:text-base">affessalong@gmail.com</p>
+                  <h4 className="font-medium text-lg mb-1">Email</h4>
+                  <p className="text-gray-600">affessalong@gmail.com</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-amber-100 p-2 sm:p-3 rounded-lg mr-4 flex-shrink-0">
-                  <Instagram className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
+                <div className="bg-amber-100 p-3 rounded-lg mr-4">
+                  <svg className="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-base sm:text-lg mb-1">Sociala Medier</h4>
-                  <div className="space-y-1">
-                    <a
-                      href="https://www.instagram.com/affessalong.jonkoping/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-amber-600 transition-colors text-sm sm:text-base flex items-center"
-                    >
-                      <Instagram className="h-4 w-4 mr-1" />
-                      @affessalong.jonkoping
-                    </a>
-                    <a
-                      href="https://www.tiktok.com/@affes.salong"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-amber-600 transition-colors text-sm sm:text-base flex items-center"
-                    >
-                      <svg className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                      </svg>
-                      @affes.salong
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="bg-amber-100 p-2 sm:p-3 rounded-lg mr-4 flex-shrink-0">
-                  <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-base sm:text-lg mb-1">Boka Online</h4>
-                  <Button
+                  <h4 className="font-medium text-lg mb-1">Boka Online</h4>
+                  <button
                     onClick={scrollToServices}
-                    className="mt-2 bg-amber-600 hover:bg-amber-700 px-4 sm:px-6 py-2 text-sm sm:text-base"
+                    className="mt-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded transition-colors"
                   >
                     Boka Tid Nu
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Opening Hours Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 bg-white rounded-xl shadow-lg overflow-hidden"
-          >
-            <div className="p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 flex items-center">
-                <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600 mr-2" />
-                Öppettider
-              </h3>
+          {/* Opening Hours */}
+          <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-6 flex items-center">
+              <svg className="h-6 w-6 text-amber-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Öppettider
+            </h3>
 
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
+            <div className="space-y-4">
+              {[
+                { day: "MÅNDAG", hours: "09:00 - 18:00" },
+                { day: "TISDAG", hours: "09:00 - 18:00" },
+                { day: "ONSDAG", hours: "09:00 - 18:00" },
+                { day: "TORSDAG", hours: "09:00 - 18:00" },
+                { day: "FREDAG", hours: "09:00 - 18:00" },
+                { day: "LÖRDAG", hours: "10:00 - 14:00" },
+                { day: "SÖNDAG", hours: "Stängt" },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center border-b border-gray-200 py-4">
+                  <div className="bg-amber-100 p-2 rounded-lg mr-4">
+                    <svg className="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
                   <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">MÅNDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">09:00 - 18:00</span>
+                    <span className="font-medium text-lg">{item.day}</span>
+                    <span className="text-gray-600 font-medium">{item.hours}</span>
                   </div>
                 </div>
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">TISDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">09:00 - 18:00</span>
-                  </div>
-                </div>
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">ONSDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">09:00 - 18:00</span>
-                  </div>
-                </div>
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">TORSDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">09:00 - 18:00</span>
-                  </div>
-                </div>
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">FREDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">09:00 - 18:00</span>
-                  </div>
-                </div>
-                <div className="flex items-center border-b border-gray-200 py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">LÖRDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">10:00 - 14:00</span>
-                  </div>
-                </div>
-                <div className="flex items-center py-3 sm:py-4">
-                  <div className="bg-amber-100 p-2 rounded-lg mr-4 flex-shrink-0">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600" />
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span className="font-medium text-base sm:text-lg">SÖNDAG</span>
-                    <span className="text-gray-600 font-medium text-sm sm:text-base">Stängt</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
+        </div>
 
-          {/* Google Map - Now below the contact and opening hours */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-12 h-[250px] sm:h-[300px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-lg mt-2 sm:mt-4"
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2093.6261490225455!2d14.165512651902933!3d57.778882992884576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6df5d2664c23%3A0xe71886a9f057cc0!2sBarnarpsgatan%2031%2C%20553%2033%20J%C3%B6nk%C3%B6ping!5e0!3m2!1ssv!2sse!4v1724351272308!5m2!1ssv!2sse"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Affes Salong karta"
-              className="rounded-xl"
-            ></iframe>
-          </motion.div>
+        {/* Google Map */}
+        <div className="mt-8 h-96 w-full overflow-hidden rounded-xl shadow-lg">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2093.6261490225455!2d14.165512651902933!3d57.778882992884576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465a6df5d2664c23%3A0xe71886a9f057cc0!2sBarnarpsgatan%2031%2C%20553%2033%20J%C3%B6nk%C3%B6ping!5e0!3m2!1ssv!2sse!4v1724351272308!5m2!1ssv!2sse"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            title="Affes Salong karta"
+          ></iframe>
         </div>
       </div>
     </section>

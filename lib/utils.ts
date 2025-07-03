@@ -1,6 +1,12 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+export function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(' ')
+}
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function scrollToSection(sectionId: string): void {
+  if (typeof document !== 'undefined') {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 }

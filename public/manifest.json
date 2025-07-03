@@ -1,28 +1,51 @@
 {
-  "name": "Affes Salong",
-  "short_name": "Affes",
-  "description": "Premium frisörsalong i Jönköping sedan 1991",
+  "name": "Affes Salong - Premium Frisörsalong i Jönköping",
+  "short_name": "Affes Salong",
+  "description": "Premium frisörsalong i Jönköping sedan 1991. Boka herrklippning, skäggtrimning och styling online. Professionell service på Barnarpsgatan 31.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#d97706",
   "background_color": "#ffffff",
-  "theme_color": "#f59e0b",
-  "orientation": "portrait",
+  "lang": "sv-SE",
+  "dir": "ltr",
+  
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
     },
     {
       "src": "/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
       "purpose": "any"
     },
     {
@@ -32,47 +55,138 @@
       "purpose": "maskable"
     }
   ],
+  
   "screenshots": [
     {
       "src": "/screenshots/screenshot1.png",
       "type": "image/png",
       "sizes": "1080x1920",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "Affes Salong startsida på mobil"
     },
     {
       "src": "/screenshots/screenshot2.png",
       "type": "image/png",
       "sizes": "1080x1920",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "Tjänster och bokning på mobil"
     }
   ],
+  
   "shortcuts": [
     {
-      "name": "Boka tid",
+      "name": "Boka Tid",
       "short_name": "Boka",
-      "description": "Boka en tid hos Affes Salong",
-      "url": "/#boka",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Tjänster",
-      "short_name": "Tjänster",
-      "description": "Se våra tjänster och priser",
+      "description": "Boka en tid direkt hos Affes Salong",
       "url": "/#tjanster",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
-      "name": "Kontakt",
-      "short_name": "Kontakt",
-      "description": "Kontakta Affes Salong",
+      "name": "Ring Oss",
+      "short_name": "Ring",
+      "description": "Ring direkt till Affes Salong",
+      "url": "tel:036-123786",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Våra Tjänster",
+      "short_name": "Tjänster",
+      "description": "Se alla våra tjänster och priser",
+      "url": "/#tjanster",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Galleri",
+      "short_name": "Galleri",
+      "description": "Se våra senaste frisyrer och klippningar",
+      "url": "/#galleri",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Hitta Oss",
+      "short_name": "Karta",
+      "description": "Hitta till Affes Salong på Barnarpsgatan 31",
       "url": "/#kontakt",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ],
-  "categories": ["beauty", "lifestyle", "shopping"],
-  "lang": "sv-SE",
-  "dir": "ltr",
+  
+  "categories": [
+    "beauty",
+    "lifestyle",
+    "business",
+    "health",
+    "shopping"
+  ],
+  
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  
   "prefer_related_applications": false,
   "related_applications": [],
-  "scope": "/"
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  
+  "handle_links": "preferred",
+  
+  "protocol_handlers": [
+    {
+      "protocol": "tel",
+      "url": "tel:036-123786"
+    }
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp"]
+      }
+    }
+  ],
+  
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }
