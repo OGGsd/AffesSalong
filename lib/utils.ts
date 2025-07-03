@@ -3,8 +3,10 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 }
 
 export function scrollToSection(sectionId: string): void {
-  const section = document.getElementById(sectionId)
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" })
+  if (typeof document !== 'undefined') {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
+    }
   }
 }

@@ -23,14 +23,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       lg: 'px-6 py-3 text-lg'
     }
     
-    const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`
+    const classes = [baseClasses, variants[variant], sizes[size], className].filter(Boolean).join(' ')
     
     if (asChild && React.isValidElement(children)) {
       return React.cloneElement(children, {
         className: classes,
         ref,
         ...props
-      })
+      } as any)
     }
     
     return (
