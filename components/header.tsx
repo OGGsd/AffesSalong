@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X } from "lucide-react"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,10 +15,43 @@ export default function Header() {
     setIsMenuOpen(false)
   }
 
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  }
+
+  const itemVariants = {
+    closed: { opacity: 0, x: -20 },
+    open: { opacity: 1, x: 0 }
+  }
+
   return (
-    <header className="fixed top-0 z-50 w-full bg-white shadow-sm">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-sm shadow-sm"
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <div className="flex items-center space-x-2">
+        <motion.div
+          className="flex items-center space-x-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <div className="relative h-10 w-10">
             <img
               src="/images/logo.png"
@@ -25,111 +60,125 @@ export default function Header() {
             />
           </div>
           <span className="text-xl font-bold text-gray-900">Affes Salong</span>
-        </div>
+        </motion.div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex md:items-center md:space-x-6">
-          <button
-            onClick={() => scrollToSection("om-oss")}
-            className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
-          >
-            Hos Oss
-          </button>
-          <button
-            onClick={() => scrollToSection("team")}
-            className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
-          >
-            Team
-          </button>
-          <button
-            onClick={() => scrollToSection("tjanster")}
-            className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
-          >
-            Tjänster
-          </button>
-          <button
-            onClick={() => scrollToSection("galleri")}
-            className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
-          >
-            Galleri
-          </button>
-          <button
-            onClick={() => scrollToSection("kontakt")}
-            className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
-          >
-            Kontakt
-          </button>
-          <button
+          {["om-oss", "team", "tjanster", "galleri", "kontakt"].map((section, index) => (
+            <motion.button
+              key={section}
+              onClick={() => scrollToSection(section)}
+              className="text-sm font-medium text-gray-900 hover:text-amber-600 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {section === "om-oss" && "Hos Oss"}
+              {section === "team" && "Team"}
+              {section === "tjanster" && "Tjänster"}
+              {section === "galleri" && "Galleri"}
+              {section === "kontakt" && "Kontakt"}
+            </motion.button>
+          ))}
+          <motion.button
             onClick={() => scrollToSection("tjanster")}
             className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
           >
             Boka Tjänst
-          </button>
+          </motion.button>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
+        <motion.button
+          className="md:hidden p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
+          whileTap={{ scale: 0.95 }}
         >
-          {isMenuOpen ? (
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+          <AnimatePresence mode="wait">
+            {isMenuOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X className="h-6 w-6" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu className="h-6 w-6" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <nav className="flex flex-col space-y-0 py-2 px-4">
-            <button
-              onClick={() => scrollToSection("om-oss")}
-              className="text-base font-medium hover:text-amber-600 py-4 border-b border-gray-100 text-left transition-colors"
-            >
-              Hos Oss
-            </button>
-            <button
-              onClick={() => scrollToSection("team")}
-              className="text-base font-medium hover:text-amber-600 py-4 border-b border-gray-100 text-left transition-colors"
-            >
-              Team
-            </button>
-            <button
-              onClick={() => scrollToSection("tjanster")}
-              className="text-base font-medium hover:text-amber-600 py-4 border-b border-gray-100 text-left transition-colors"
-            >
-              Tjänster
-            </button>
-            <button
-              onClick={() => scrollToSection("galleri")}
-              className="text-base font-medium hover:text-amber-600 py-4 border-b border-gray-100 text-left transition-colors"
-            >
-              Galleri
-            </button>
-            <button
-              onClick={() => scrollToSection("kontakt")}
-              className="text-base font-medium hover:text-amber-600 py-4 border-b border-gray-100 text-left transition-colors"
-            >
-              Kontakt
-            </button>
-            <div className="py-4">
-              <button
-                onClick={() => scrollToSection("tjanster")}
-                className="w-full bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="md:hidden bg-white/95 backdrop-blur-sm shadow-lg overflow-hidden"
+          >
+            <nav className="flex flex-col py-4 px-4">
+              {[
+                { id: "om-oss", label: "Hos Oss" },
+                { id: "team", label: "Team" },
+                { id: "tjanster", label: "Tjänster" },
+                { id: "galleri", label: "Galleri" },
+                { id: "kontakt", label: "Kontakt" }
+              ].map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-base font-medium hover:text-amber-600 py-3 border-b border-gray-100 text-left transition-colors"
+                  variants={itemVariants}
+                  initial="closed"
+                  animate="open"
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 10 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+              <motion.div
+                className="py-4"
+                variants={itemVariants}
+                initial="closed"
+                animate="open"
+                transition={{ delay: 0.5 }}
               >
-                Boka Tjänst
-              </button>
-            </div>
-          </nav>
-        </div>
-      )}
-    </header>
+                <motion.button
+                  onClick={() => scrollToSection("tjanster")}
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white px-4 py-3 rounded transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Boka Tjänst
+                </motion.button>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   )
 }

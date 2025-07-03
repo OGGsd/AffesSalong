@@ -1,6 +1,13 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { useInView } from "framer-motion"
+import { useRef } from "react"
+
 export default function AboutSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
     if (section) {
@@ -8,28 +15,74 @@ export default function AboutSection() {
     }
   }
 
-  return (
-    <section id="om-oss" className="py-16 sm:py-20 md:py-24 px-4 md:px-6 lg:px-8 bg-white">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Hos Oss På Affes Salong</h2>
-          <div className="w-16 h-1 bg-amber-600 mx-auto mb-6"></div>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
-            <div className="relative w-64 h-64 mb-6">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  }
+
+  return (
+    <section id="om-oss" className="py-16 sm:py-20 md:py-24 px-4 md:px-6 lg:px-8 bg-white" ref={ref}>
+      <div className="container mx-auto max-w-6xl">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center mb-12"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
+          >
+            Hos Oss På Affes Salong
+          </motion.h2>
+          <motion.div
+            variants={itemVariants}
+            className="w-16 h-1 bg-amber-600 mx-auto mb-6"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="relative w-64 h-64 mb-6"
+              whileHover={{ rotate: 5 }}
+              transition={{ duration: 0.3 }}
+            >
               <img
                 src="/images/logo.png"
                 alt="Affes Salong Logo"
                 className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">Affes Salong</h3>
             <p className="text-center text-gray-600">Premium barber shop sedan 1991</p>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <div className="mb-8">
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
                 Affes Salong grundades 1991 och har sedan dess varit ett föredöme för högkvalitativa behandlingar och
@@ -43,66 +96,46 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="flex items-start p-4 bg-amber-50 rounded-lg">
-                <div className="bg-amber-100 p-2 rounded-lg mr-3">
-                  <svg className="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">Expert Frisör</h3>
-                  <p className="text-gray-600 text-sm">Erfarna och skickliga stylister</p>
-                </div>
-              </div>
+            <motion.div
+              variants={containerVariants}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+            >
+              {[
+                { icon: "👨‍💼", title: "Expert Frisör", desc: "Erfarna och skickliga stylister" },
+                { icon: "⭐", title: "Premium Produkter", desc: "Vi använder bara det bästa" },
+                { icon: "👥", title: "Kundupplevelse", desc: "Personlig och anpassad service" },
+                { icon: "⏰", title: "Flexibla Tider", desc: "Tider som passar ditt schema" }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="flex items-start p-4 bg-amber-50 rounded-lg"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="bg-amber-100 p-2 rounded-lg mr-3 text-xl">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg">{item.title}</h3>
+                    <p className="text-gray-600 text-sm">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
 
-              <div className="flex items-start p-4 bg-amber-50 rounded-lg">
-                <div className="bg-amber-100 p-2 rounded-lg mr-3">
-                  <svg className="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">Premium Produkter</h3>
-                  <p className="text-gray-600 text-sm">Vi använder bara det bästa</p>
-                </div>
-              </div>
-
-              <div className="flex items-start p-4 bg-amber-50 rounded-lg">
-                <div className="bg-amber-100 p-2 rounded-lg mr-3">
-                  <svg className="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">Kundupplevelse</h3>
-                  <p className="text-gray-600 text-sm">Personlig och anpassad service</p>
-                </div>
-              </div>
-
-              <div className="flex items-start p-4 bg-amber-50 rounded-lg">
-                <div className="bg-amber-100 p-2 rounded-lg mr-3">
-                  <svg className="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">Flexibla Tider</h3>
-                  <p className="text-gray-600 text-sm">Tider som passar ditt schema</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button
+            <motion.div variants={itemVariants} className="flex gap-4">
+              <motion.button
                 onClick={() => scrollToSection("tjanster")}
-                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded transition-colors"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Se Våra Tjänster
-              </button>
-            </div>
-          </div>
-        </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

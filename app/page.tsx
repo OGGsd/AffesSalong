@@ -6,6 +6,7 @@ import ServicesSection from "../components/services-section"
 import GallerySection from "../components/gallery-section"
 import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
+import MobileBottomNav from "../components/mobile-bottom-nav"
 
 const services = [
   {
@@ -130,7 +131,7 @@ const galleryImages = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="pb-16 md:pb-0">
       <Header />
       <HeroSection />
       <AboutSection />
@@ -139,6 +140,7 @@ export default function Home() {
       <GallerySection images={galleryImages} />
       <ContactSection />
       <Footer />
+      <MobileBottomNav />
     </div>
   )
 }
