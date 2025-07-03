@@ -1,6 +1,6 @@
 {
   "name": "affes-salong",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,12 +9,13 @@
   },
   "dependencies": {
     "next": "14.2.16",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@types/node": "24.0.10",
-    "@types/react": "19.1.8",
-    "typescript": "^5.7.2"
+    "@types/node": "20.14.0",
+    "@types/react": "18.3.0",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.4.5"
   }
 }
