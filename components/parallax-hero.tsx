@@ -12,14 +12,13 @@ export default function ParallaxHero() {
   const { scrollY } = useScroll()
   const deviceType = useDeviceDetection()
   const isLandscape = useIsLandscape()
+  const [isMounted, setIsMounted] = useState(false)
 
   // Adjust parallax effect based on device type
   const parallaxStrength = deviceType === "mobile" ? 50 : 150
   const y = useTransform(scrollY, [0, 500], [0, parallaxStrength])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
   const scale = useTransform(scrollY, [0, 300], [1, deviceType === "mobile" ? 1.05 : 1.1])
-
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -35,6 +34,10 @@ export default function ParallaxHero() {
 
   // Adjust hero height based on device and orientation
   const getHeroHeight = () => {
+    if (!isMounted) {
+      return "h-[85vh]" // Default height for SSR
+    }
+    
     if (deviceType === "mobile") {
       return isLandscape ? "h-screen" : "h-[80vh]"
     } else if (deviceType === "tablet") {
@@ -46,6 +49,7 @@ export default function ParallaxHero() {
 
   const heroHeight = getHeroHeight()
 
+  // Static fallback for SSR
   if (!isMounted) {
     return (
       <section className={`relative ${heroHeight} w-full overflow-hidden`}>
@@ -60,22 +64,27 @@ export default function ParallaxHero() {
           quality={90}
         />
         <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+          <div className="mb-2 tracking-wider text-amber-300 font-medium text-sm sm:text-base">
+            Premium Barber Shop
+          </div>
           <h1 className="mb-4 text-3xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
             Affes Salong – Est. 1991
           </h1>
-          <p className="mb-8 max-w-2xl text-lg sm:text-xl md:text-2xl">Din Premium Salon för Skräddarsydda Lösningar</p>
+          <p className="mb-8 sm:mb-10 max-w-2xl text-lg sm:text-xl md:text-2xl">
+            Din Premium Salon för Skräddarsydda Lösningar
+          </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
-              size={deviceType === "mobile" ? "default" : "lg"}
-              className="bg-amber-600 hover:bg-amber-700"
+              size="default"
+              className="bg-amber-600 hover:bg-amber-700 px-4 py-2"
               onClick={() => scrollToSection("tjanster")}
             >
               <Calendar className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Boka Tjänst
             </Button>
             <Button
-              size={deviceType === "mobile" ? "default" : "lg"}
-              className="bg-white text-amber-600 hover:bg-gray-100"
+              size="default"
+              className="bg-white text-amber-600 hover:bg-gray-100 px-4 py-2"
               onClick={() => scrollToSection("galleri")}
             >
               <Camera className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />

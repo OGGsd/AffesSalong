@@ -21,8 +21,11 @@ export type DeviceType = "mobile" | "tablet" | "desktop"
  */
 export function useDeviceDetection(): DeviceType {
   const [deviceType, setDeviceType] = useState<DeviceType>("desktop")
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+    
     const handleResize = () => {
       const width = window.innerWidth
       if (width < breakpoints.md) {
@@ -44,7 +47,8 @@ export function useDeviceDetection(): DeviceType {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  return deviceType
+  // Return desktop as default for SSR consistency
+  return isClient ? deviceType : "desktop"
 }
 
 /**
@@ -53,8 +57,11 @@ export function useDeviceDetection(): DeviceType {
  */
 export function useIsLandscape(): boolean {
   const [isLandscape, setIsLandscape] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+    
     const handleResize = () => {
       setIsLandscape(window.innerWidth > window.innerHeight)
     }
@@ -69,7 +76,8 @@ export function useIsLandscape(): boolean {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  return isLandscape
+  // Return false as default for SSR consistency
+  return isClient ? isLandscape : false
 }
 
 /**

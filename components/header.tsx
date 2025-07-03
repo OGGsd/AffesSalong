@@ -12,9 +12,14 @@ import { useDeviceDetection, useScrollPosition } from "./responsive-utils"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const scrolled = useScrollPosition(50)
   const deviceType = useDeviceDetection()
   const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -37,14 +42,14 @@ export default function Header() {
 
   // Close menu on resize to desktop
   useEffect(() => {
-    if (deviceType === "desktop") {
+    if (isMounted && deviceType === "desktop") {
       setIsMenuOpen(false)
     }
-  }, [deviceType])
+  }, [deviceType, isMounted])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (deviceType !== "desktop") {
+    if (isMounted && deviceType !== "desktop") {
       if (isMenuOpen) {
         document.body.style.overflow = "hidden"
       } else {
@@ -55,7 +60,7 @@ export default function Header() {
     return () => {
       document.body.style.overflow = "auto"
     }
-  }, [isMenuOpen, deviceType])
+  }, [isMenuOpen, deviceType, isMounted])
 
   // Smooth scroll function with improved mobile handling
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, sectionId: string) => {
@@ -148,7 +153,7 @@ export default function Header() {
           </button>
           <Button
             onClick={(e) => scrollToSection(e, "tjanster")}
-            size={deviceType === "tablet" ? "sm" : "default"}
+            size={isMounted && deviceType === "tablet" ? "sm" : "default"}
             className="bg-amber-600 hover:bg-amber-700"
           >
             Boka Tjänst
