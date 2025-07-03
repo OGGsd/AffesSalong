@@ -7,6 +7,7 @@ import GallerySection from "../components/gallery-section"
 import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
 import MobileBottomNav from "../components/mobile-bottom-nav"
+import PWARegister from "./pwa-register"
 
 const services = [
   {
@@ -132,6 +133,7 @@ const galleryImages = [
 export default function Home() {
   return (
     <div className="pb-16 md:pb-0">
+      <PWARegister />
       <Header />
       <HeroSection />
       <AboutSection />
