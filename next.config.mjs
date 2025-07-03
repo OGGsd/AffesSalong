@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,34 +16,25 @@ const nextConfig = {
     domains: ['affessalong.se', 'hebbkx1anhila5yf.public.blob.vercel-storage.com'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   async redirects() {
     return [
-      // Redirect from Axiestudio.se to the main Affes Salong website
       {
         source: '/',
-        has: [
-          {
-            type: 'host',
-            value: 'axiestudio.se',
-          },
-        ],
+        has: [{ type: 'host', value: 'axiestudio.se' }],
         destination: 'https://affessalong.axiestudio.se',
         permanent: true,
       },
       {
         source: '/',
-        has: [
-          {
-            type: 'host',
-            value: 'www.axiestudio.se',
-          },
-        ],
+        has: [{ type: 'host', value: 'www.axiestudio.se' }],
         destination: 'https://affessalong.axiestudio.se',
         permanent: true,
       },
-      // Redirect section-specific URLs to the main website with hash
       {
         source: '/om-oss',
         destination: '/#om-oss',
@@ -93,7 +89,51 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(.*).js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(.*).css',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
+  },
+  webpack: (config, { dev, isServer }) => {
+    // Optimize bundle size
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      }
+    }
+    
+    return config
   },
 };
 

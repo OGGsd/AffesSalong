@@ -1,76 +1,61 @@
-"use client"
+'use client'
 
-import { useEffect } from "react"
+import { useEffect } from 'react'
+import { initWebVitals } from '@/lib/analytics'
 
 export default function PerformanceOptimization() {
   useEffect(() => {
-    // Only run in browser environment with safe feature detection
-    if (typeof window === "undefined") return
+    // Initialize web vitals tracking
+    initWebVitals()
 
-    // Safely measure Core Web Vitals
-    if (typeof PerformanceObserver === "function") {
-      try {
-        // Largest Contentful Paint
-        if (PerformanceObserver.supportedEntryTypes?.includes("largest-contentful-paint")) {
-          const lcpObserver = new PerformanceObserver((entryList) => {
-            const entries = entryList.getEntries()
-            if (entries.length > 0) {
-              const lastEntry = entries[entries.length - 1]
-              // Send to analytics or log
-              console.log("LCP:", lastEntry.startTime)
+    // Optimize images with Intersection Observer
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement
+            if (img.dataset.src) {
+              img.src = img.dataset.src
+              img.removeAttribute('data-src')
+              imageObserver.unobserve(img)
             }
-          })
-          lcpObserver.observe({ type: "largest-contentful-paint", buffered: true })
-        }
-
-        // First Input Delay
-        if (PerformanceObserver.supportedEntryTypes?.includes("first-input")) {
-          const fidObserver = new PerformanceObserver((entryList) => {
-            const entries = entryList.getEntries()
-            if (entries.length > 0) {
-              const firstEntry = entries[0]
-              // Send to analytics or log
-              console.log("FID:", firstEntry.processingStart - firstEntry.startTime)
-            }
-          })
-          fidObserver.observe({ type: "first-input", buffered: true })
-        }
-
-        // Cumulative Layout Shift
-        if (PerformanceObserver.supportedEntryTypes?.includes("layout-shift")) {
-          let clsValue = 0
-          const clsObserver = new PerformanceObserver((entryList) => {
-            for (const entry of entryList.getEntries()) {
-              if (!entry.hadRecentInput) {
-                clsValue += entry.value
-              }
-            }
-            // Send to analytics or log
-            console.log("CLS:", clsValue)
-          })
-          clsObserver.observe({ type: "layout-shift", buffered: true })
-        }
-      } catch (error) {
-        // Silently handle errors
-        console.error("Performance measurement error:", error)
-      }
-    }
-
-    // Safely load non-critical resources
-    if (typeof requestIdleCallback === "function") {
-      try {
-        requestIdleCallback(() => {
-          // Example: Load analytics or other non-critical scripts
-          // This is just a placeholder - implement as needed
-          console.log("Loading non-critical resources during idle time")
+          }
         })
-      } catch (error) {
-        // Silently handle errors
-        console.error("requestIdleCallback error:", error)
-      }
+      })
+
+      // Observe all images with data-src attribute
+      document.querySelectorAll('img[data-src]').forEach((img) => {
+        imageObserver.observe(img)
+      })
     }
 
-    // No cleanup needed for observers as they're scoped to this effect
+    // Prefetch critical pages during idle time
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        const criticalPages = ['/om-oss', '/tjanster', '/kontakt']
+        criticalPages.forEach((page) => {
+          const link = document.createElement('link')
+          link.rel = 'prefetch'
+          link.href = page
+          document.head.appendChild(link)
+        })
+      })
+    }
+
+    // Optimize third-party scripts
+    const optimizeThirdPartyScripts = () => {
+      // Delay non-critical scripts
+      setTimeout(() => {
+        // Load non-critical analytics or tracking scripts here
+      }, 3000)
+    }
+
+    // Run optimization after page load
+    if (document.readyState === 'complete') {
+      optimizeThirdPartyScripts()
+    } else {
+      window.addEventListener('load', optimizeThirdPartyScripts)
+    }
   }, [])
 
   return null

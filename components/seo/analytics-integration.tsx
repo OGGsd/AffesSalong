@@ -1,60 +1,52 @@
-"use client"
+'use client'
 
-import { useEffect } from "react"
-import { usePathname, useSearchParams } from "next/navigation"
+import { useEffect } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { trackPageView, trackEvent } from '@/lib/analytics'
 
 export default function AnalyticsIntegration() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Track page views
-    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "")
+    // Track page views on route changes
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
+    trackPageView(url)
 
-    // Example: Google Analytics 4 page view tracking
-    if (typeof window.gtag === "function") {
-      window.gtag("config", "G-XXXXXXXXXX", {
-        page_path: url,
+    // Track scroll depth
+    let maxScroll = 0
+    const handleScroll = () => {
+      const scrollPercent = Math.round(
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+      )
+      
+      if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+        maxScroll = scrollPercent
+        trackEvent('scroll_depth', {
+          scroll_depth: scrollPercent,
+          page_path: pathname,
+        })
+      }
+    }
+
+    // Track time on page
+    const startTime = Date.now()
+    const handleBeforeUnload = () => {
+      const timeOnPage = Math.round((Date.now() - startTime) / 1000)
+      trackEvent('time_on_page', {
+        time_seconds: timeOnPage,
+        page_path: pathname,
       })
     }
 
-    // Example: Track Core Web Vitals
-    if ("web-vitals" in window) {
-      import("web-vitals").then(({ getCLS, getFID, getLCP }) => {
-        getCLS((metric) => {
-          console.log("CLS:", metric.value)
-          if (typeof window.gtag === "function") {
-            window.gtag("event", "web_vitals", {
-              event_category: "Web Vitals",
-              event_label: "CLS",
-              value: Math.round(metric.value * 1000) / 1000,
-              non_interaction: true,
-            })
-          }
-        })
-        getFID((metric) => {
-          console.log("FID:", metric.value)
-          if (typeof window.gtag === "function") {
-            window.gtag("event", "web_vitals", {
-              event_category: "Web Vitals",
-              event_label: "FID",
-              value: Math.round(metric.value),
-              non_interaction: true,
-            })
-          }
-        })
-        getLCP((metric) => {
-          console.log("LCP:", metric.value)
-          if (typeof window.gtag === "function") {
-            window.gtag("event", "web_vitals", {
-              event_category: "Web Vitals",
-              event_label: "LCP",
-              value: Math.round(metric.value),
-              non_interaction: true,
-            })
-          }
-        })
-      })
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('beforeunload', handleBeforeUnload)
     }
   }, [pathname, searchParams])
 
