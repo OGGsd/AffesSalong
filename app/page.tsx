@@ -7,7 +7,6 @@ import GallerySection from "./components/gallery-section"
 import ContactSection from "./components/contact-section"
 import Footer from "./components/footer"
 
-// Define the services
 const services = [
   {
     id: "haircut-beard",
@@ -103,7 +102,6 @@ const services = [
   },
 ]
 
-// Gallery images
 const galleryImages = [
   { src: "/images/gallery/client1.jpeg", alt: "Herrklippning med fade hos Affes Salong i Jönköping" },
   { src: "/images/gallery/client2.jpeg", alt: "Stilig herrfrisyr från Affes Salong" },
