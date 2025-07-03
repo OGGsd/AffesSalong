@@ -13,6 +13,7 @@ export default function ParallaxHero() {
   const deviceType = useDeviceDetection()
   const isLandscape = useIsLandscape()
   const [isMounted, setIsMounted] = useState(false)
+  const [heroHeight, setHeroHeight] = useState("h-[85vh]") // Initialize with SSR-safe default
 
   // Adjust parallax effect based on device type
   const parallaxStrength = deviceType === "mobile" ? 50 : 150
@@ -24,6 +25,19 @@ export default function ParallaxHero() {
     setIsMounted(true)
   }, [])
 
+  // Update hero height after component mounts
+  useEffect(() => {
+    if (isMounted) {
+      if (deviceType === "mobile") {
+        setHeroHeight(isLandscape ? "h-screen" : "h-[80vh]")
+      } else if (deviceType === "tablet") {
+        setHeroHeight("h-[85vh]")
+      } else {
+        setHeroHeight("h-[85vh]")
+      }
+    }
+  }, [isMounted, deviceType, isLandscape])
+
   // Smooth scroll function
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
@@ -31,23 +45,6 @@ export default function ParallaxHero() {
       section.scrollIntoView({ behavior: "smooth" })
     }
   }
-
-  // Adjust hero height based on device and orientation
-  const getHeroHeight = () => {
-    if (!isMounted) {
-      return "h-[85vh]" // Default height for SSR
-    }
-    
-    if (deviceType === "mobile") {
-      return isLandscape ? "h-screen" : "h-[80vh]"
-    } else if (deviceType === "tablet") {
-      return "h-[85vh]"
-    } else {
-      return "h-[85vh]"
-    }
-  }
-
-  const heroHeight = getHeroHeight()
 
   // Static fallback for SSR
   if (!isMounted) {
@@ -97,7 +94,7 @@ export default function ParallaxHero() {
   }
 
   return (
-    <section ref={ref} className={`relative ${heroHeight} w-full overflow-hidden`}>
+    <section ref={ref} className={`relative ${heroHeight} w-full overflow-hidden`} suppressHydrationWarning>
       <motion.div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 z-10" style={{ opacity }} />
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <Image

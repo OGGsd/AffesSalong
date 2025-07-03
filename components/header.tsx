@@ -100,8 +100,9 @@ export default function Header() {
               </div>
               <span
                 className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${
-                  scrolled ? "text-gray-900" : "text-white"
+                  isMounted && scrolled ? "text-gray-900" : "text-white"
                 }`}
+                suppressHydrationWarning
               >
                 Affes Salong
               </span>
@@ -114,40 +115,45 @@ export default function Header() {
           <button
             onClick={(e) => scrollToSection(e, "om-oss")}
             className={`text-sm font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
+              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
             }`}
+            suppressHydrationWarning
           >
             Hos Oss
           </button>
           <button
             onClick={(e) => scrollToSection(e, "team")}
             className={`text-sm font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
+              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
             }`}
+            suppressHydrationWarning
           >
             Team
           </button>
           <button
             onClick={(e) => scrollToSection(e, "tjanster")}
             className={`text-sm font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
+              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
             }`}
+            suppressHydrationWarning
           >
             Tjänster
           </button>
           <button
             onClick={(e) => scrollToSection(e, "galleri")}
             className={`text-sm font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
+              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
             }`}
+            suppressHydrationWarning
           >
             Galleri
           </button>
           <button
             onClick={(e) => scrollToSection(e, "kontakt")}
             className={`text-sm font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
+              isMounted && scrolled ? "text-gray-900 hover:text-amber-600" : "text-white hover:text-amber-300"
             }`}
+            suppressHydrationWarning
           >
             Kontakt
           </button>
@@ -165,18 +171,20 @@ export default function Header() {
           <Link
             href="tel:036-123786"
             className={`p-2 rounded-full ${
-              scrolled ? "bg-amber-600 text-white" : "bg-white/20 backdrop-blur-sm text-white"
+              isMounted && scrolled ? "bg-amber-600 text-white" : "bg-white/20 backdrop-blur-sm text-white"
             }`}
             aria-label="Ring oss"
+            suppressHydrationWarning
           >
             <Phone className="h-5 w-5" />
           </Link>
           <Button
             variant="ghost"
             size="icon"
-            className={`md:hidden ${scrolled ? "text-gray-900" : "text-white"}`}
+            className={`md:hidden ${isMounted && scrolled ? "text-gray-900" : "text-white"}`}
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Stäng meny" : "Öppna meny"}
+            suppressHydrationWarning
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
