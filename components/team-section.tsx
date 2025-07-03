@@ -1,13 +1,4 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
-
 export default function TeamSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   const teamMembers = [
     {
       name: "Fady",
@@ -35,126 +26,37 @@ export default function TeamSection() {
     },
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.8,
-        type: "spring",
-        damping: 20
-      }
-    }
-  }
-
   return (
-    <section id="team" className="py-20 md:py-28 px-6 md:px-8 lg:px-12 bg-gradient-to-b from-gray-50 to-white" ref={ref}>
-      <div className="container mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Vårt Professionella Team
-          </motion.h2>
-          <motion.div 
-            className="w-24 h-1.5 bg-amber-600 mx-auto mb-8"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 96 } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          />
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+    <section id="team" className="py-16 sm:py-20 md:py-24 px-4 md:px-6 lg:px-8 bg-gray-50">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl mb-4">Vårt Professionella Team</h2>
+          <div className="w-16 sm:w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Möt våra erfarna stylister som är dedikerade till att ge dig den perfekta looken.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {teamMembers.map((member, index) => (
-            <motion.div 
-              key={index} 
-              variants={itemVariants}
-              className="group"
-            >
-              <motion.div 
-                className="bg-white rounded-3xl shadow-lg overflow-hidden h-full relative"
-                whileHover={{ 
-                  scale: 1.03,
-                  y: -10,
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-                }}
-                transition={{ duration: 0.4, type: "spring", damping: 15 }}
-              >
-                {/* Background gradient overlay on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-amber-50/80 to-orange-50/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-                  initial={false}
-                />
-                
-                <div className="relative h-80 sm:h-96 w-full overflow-hidden">
-                  <motion.img
+            <div key={index} className="group">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
+                <div className="relative h-72 sm:h-80 w-full overflow-hidden">
+                  <img
                     src={member.image}
                     alt={`${member.name} - Frisör på Affes Salong i Jönköping`}
                     className="w-full h-full object-cover object-center"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
                   />
-                  
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
-                <motion.div 
-                  className="p-6 text-center relative z-20"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.8 }}
-                >
-                  <motion.h3 
-                    className="text-2xl font-bold text-gray-900 mb-2"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {member.name}
-                  </motion.h3>
-                  {member.jobTitle && (
-                    <p className="text-amber-600 font-semibold text-lg mb-2">{member.jobTitle}</p>
-                  )}
-                  {member.description && (
-                    <p className="text-gray-600 text-base leading-relaxed">{member.description}</p>
-                  )}
-                </motion.div>
-              </motion.div>
-            </motion.div>
+                <div className="p-4 sm:p-6 text-center">
+                  <h3 className="text-lg sm:text-xl font-bold">{member.name}</h3>
+                  {member.jobTitle && <p className="text-gray-600 text-sm">{member.jobTitle}</p>}
+                  {member.description && <p className="text-gray-500 text-xs mt-1">{member.description}</p>}
+                </div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
