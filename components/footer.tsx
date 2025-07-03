@@ -1,23 +1,7 @@
-"use client"
-
-import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Instagram, ChevronDown, ChevronUp, Download } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
 
 export default function Footer() {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null)
-
-  const toggleSection = (section: string) => {
-    if (expandedSection === section) {
-      setExpandedSection(null)
-    } else {
-      setExpandedSection(section)
-    }
-  }
-
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
     if (section) {
@@ -48,194 +32,41 @@ export default function Footer() {
           <div className="flex items-center space-x-3">
             <Link
               href="tel:036-123786"
-              className="bg-gradient-to-tr from-amber-600 to-amber-400 p-2 sm:p-3 rounded-full hover:scale-110 transition-transform duration-300"
+              className="bg-amber-600 hover:bg-amber-700 p-3 rounded-full transition-colors"
             >
-              <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
             </Link>
             <a
               href="https://www.instagram.com/affessalong.jonkoping/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-tr from-purple-600 to-pink-400 p-2 sm:p-3 rounded-full hover:scale-110 transition-transform duration-300"
+              className="bg-purple-600 hover:bg-purple-700 p-3 rounded-full transition-colors"
             >
-              <Instagram className="h-5 w-5 sm:h-6 sm:w-6" />
-            </a>
-            <a
-              href="https://www.tiktok.com/@affes.salong"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-tr from-black to-gray-700 p-2 sm:p-3 rounded-full hover:scale-110 transition-transform duration-300"
-            >
-              <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.875.807-2.026 1.297-3.323 1.297s-2.448-.49-3.323-1.297c-.807-.875-1.297-2.026-1.297-3.323s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323z"/>
               </svg>
             </a>
           </div>
         </div>
 
-        {/* Mobile Accordion Sections */}
-        <div className="md:hidden space-y-4 mb-8">
-          {/* About Us Section */}
-          <div className="border-b border-gray-800 pb-4">
-            <button
-              onClick={() => toggleSection("about")}
-              className="flex justify-between items-center w-full py-2 text-left"
-            >
-              <h3 className="text-base font-semibold">Om Oss</h3>
-              {expandedSection === "about" ? (
-                <ChevronUp className="h-5 w-5 text-amber-400" />
-              ) : (
-                <ChevronDown className="h-5 w-5 text-amber-400" />
-              )}
-            </button>
-            <AnimatePresence>
-              {expandedSection === "about" && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <p className="text-gray-400 text-sm pt-2">
-                    Premium hårsalong sedan 1991. Vi erbjuder högkvalitativa behandlingar och personlig service för att
-                    göra din upplevelse hos oss unik och exceptionell.
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Quick Links Section */}
-          <div className="border-b border-gray-800 pb-4">
-            <button
-              onClick={() => toggleSection("links")}
-              className="flex justify-between items-center w-full py-2 text-left"
-            >
-              <h3 className="text-base font-semibold">Snabblänkar</h3>
-              {expandedSection === "links" ? (
-                <ChevronUp className="h-5 w-5 text-amber-400" />
-              ) : (
-                <ChevronDown className="h-5 w-5 text-amber-400" />
-              )}
-            </button>
-            <AnimatePresence>
-              {expandedSection === "links" && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <button
-                      onClick={() => scrollToSection("om-oss")}
-                      className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
-                    >
-                      Hos Oss
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("team")}
-                      className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
-                    >
-                      Team
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("tjanster")}
-                      className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
-                    >
-                      Tjänster
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("galleri")}
-                      className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
-                    >
-                      Galleri
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("kontakt")}
-                      className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
-                    >
-                      Kontakt
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Contact Section */}
-          <div className="border-b border-gray-800 pb-4">
-            <button
-              onClick={() => toggleSection("contact")}
-              className="flex justify-between items-center w-full py-2 text-left"
-            >
-              <h3 className="text-base font-semibold">Kontakt</h3>
-              {expandedSection === "contact" ? (
-                <ChevronUp className="h-5 w-5 text-amber-400" />
-              ) : (
-                <ChevronDown className="h-5 w-5 text-amber-400" />
-              )}
-            </button>
-            <AnimatePresence>
-              {expandedSection === "contact" && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <address className="not-italic text-gray-400 text-sm pt-2 space-y-3">
-                    <div className="flex items-center">
-                      <Phone className="mr-2 h-4 w-4 text-amber-400" />
-                      <span>036-123786</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-amber-400" />
-                      <span>affessalong@gmail.com</span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="mr-2 h-4 w-4 text-amber-400" />
-                      <span>Barnarpsgatan 31, 55316, Jönköping</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Instagram className="mr-2 h-4 w-4 text-amber-400" />
-                      <a
-                        href="https://www.instagram.com/affessalong.jonkoping/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-amber-300 transition-colors"
-                      >
-                        @affessalong.jonkoping
-                      </a>
-                    </div>
-                  </address>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Desktop Three Column Layout */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12">
+        {/* Three Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-semibold border-b border-gray-800 pb-2">Om Oss</h3>
-            <p className="text-gray-400 text-sm sm:text-base">
+            <h3 className="mb-4 text-lg font-semibold border-b border-gray-800 pb-2">Om Oss</h3>
+            <p className="text-gray-400 text-sm">
               Premium hårsalong sedan 1991. Vi erbjuder högkvalitativa behandlingar och personlig service för att göra
               din upplevelse hos oss unik och exceptionell.
             </p>
           </div>
           <div>
-            <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-semibold border-b border-gray-800 pb-2">
-              Snabblänkar
-            </h3>
+            <h3 className="mb-4 text-lg font-semibold border-b border-gray-800 pb-2">Snabblänkar</h3>
             <ul className="grid grid-cols-2 gap-2">
               <li>
                 <button
                   onClick={() => scrollToSection("om-oss")}
-                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm sm:text-base text-left"
+                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
                 >
                   Hos Oss
                 </button>
@@ -243,7 +74,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("team")}
-                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm sm:text-base text-left"
+                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
                 >
                   Team
                 </button>
@@ -251,7 +82,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("tjanster")}
-                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm sm:text-base text-left"
+                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
                 >
                   Tjänster
                 </button>
@@ -259,7 +90,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("galleri")}
-                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm sm:text-base text-left"
+                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
                 >
                   Galleri
                 </button>
@@ -267,7 +98,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("kontakt")}
-                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm sm:text-base text-left"
+                  className="text-gray-400 hover:text-amber-300 transition-colors text-sm text-left"
                 >
                   Kontakt
                 </button>
@@ -275,102 +106,34 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-semibold border-b border-gray-800 pb-2">Kontakt</h3>
-            <address className="not-italic text-gray-400 text-sm sm:text-base">
+            <h3 className="mb-4 text-lg font-semibold border-b border-gray-800 pb-2">Kontakt</h3>
+            <address className="not-italic text-gray-400 text-sm">
               <div className="mb-3 flex items-center">
-                <Phone className="mr-2 h-4 w-4 text-amber-400" />
+                <svg className="mr-2 h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                 <span>036-123786</span>
               </div>
               <div className="mb-3 flex items-center">
-                <Mail className="mr-2 h-4 w-4 text-amber-400" />
+                <svg className="mr-2 h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
                 <span>affessalong@gmail.com</span>
               </div>
               <div className="mb-3 flex items-center">
-                <MapPin className="mr-2 h-4 w-4 text-amber-400" />
+                <svg className="mr-2 h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                </svg>
                 <span>Barnarpsgatan 31, 55316, Jönköping</span>
-              </div>
-              <div className="mb-3 flex items-center">
-                <Instagram className="mr-2 h-4 w-4 text-amber-400" />
-                <a
-                  href="https://www.instagram.com/affessalong.jonkoping/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-amber-300 transition-colors"
-                >
-                  @affessalong.jonkoping
-                </a>
               </div>
             </address>
           </div>
         </div>
 
-        {/* PWA Install Button and Copyright */}
         <div className="border-t border-gray-800 pt-6">
-          <div className="flex flex-col items-center justify-center mb-6">
-            <div className="bg-gradient-to-r from-amber-600 to-amber-500 p-4 rounded-lg shadow-lg mb-4 max-w-md w-full">
-              <h4 className="text-white font-bold text-lg mb-2 text-center">Affes Salong App</h4>
-              <p className="text-white/90 text-sm mb-4 text-center">
-                Få snabbare åtkomst, offline-funktionalitet och enklare bokning med vår app!
-              </p>
-              <div className="flex justify-center">
-                {/* Direct button implementation instead of component for clarity */}
-                <Button
-                  onClick={() => {
-                    // Trigger the beforeinstallprompt event manually if available
-                    if (window.deferredPrompt) {
-                      window.deferredPrompt.prompt()
-                      window.deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === "accepted") {
-                          console.log("User accepted the install prompt")
-                        } else {
-                          console.log("User dismissed the install prompt")
-                        }
-                        window.deferredPrompt = null
-                      })
-                    } else {
-                      // For iOS devices
-                      if (/iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())) {
-                        alert(
-                          "För att installera appen på iOS: Tryck på 'Dela' ikonen och välj 'Lägg till på hemskärmen'",
-                        )
-                      } else {
-                        alert(
-                          "För att installera appen: Öppna webbläsarens meny och välj 'Installera app' eller 'Lägg till på hemskärmen'",
-                        )
-                      }
-                    }
-                  }}
-                  className="bg-white text-amber-600 hover:bg-gray-100 px-6 py-2 rounded-lg font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                >
-                  <Download className="h-5 w-5" />
-                  Ladda Ner Appen
-                </Button>
-              </div>
-            </div>
-          </div>
-          <p className="text-gray-400 text-sm sm:text-base text-center">
+          <p className="text-gray-400 text-sm text-center">
             &copy; {new Date().getFullYear()} Affes Salong. Alla rättigheter förbehållna.
           </p>
-          <div className="mt-2 flex justify-center space-x-4">
-            <a
-              href="https://www.instagram.com/affessalong.jonkoping/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-amber-300 transition-colors"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.tiktok.com/@affes.salong"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-amber-300 transition-colors"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-              </svg>
-            </a>
-          </div>
         </div>
       </div>
     </footer>

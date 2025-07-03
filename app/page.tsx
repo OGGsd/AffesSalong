@@ -1,67 +1,14 @@
-import dynamic from "next/dynamic"
+import Header from "@/components/header"
+import HeroSection from "@/components/hero-section"
+import AboutSection from "@/components/about-section"
+import TeamSection from "@/components/team-section"
 import ServicesSection from "@/components/services-section"
 import GallerySection from "@/components/gallery-section"
 import ContactSection from "@/components/contact-section"
-import TeamSection from "@/components/team-section"
-import AboutSection from "@/components/about-section"
-import CookieConsent from "@/components/cookie-consent"
-import PWANotification from "@/components/pwa-notification"
 import Footer from "@/components/footer"
-import InternalLinks from "@/components/seo/internal-links"
-import ContentOptimization from "@/components/seo/content-optimization"
 
-// SEO Components
-import AboutSectionSEO from "@/components/seo/about-section-seo"
-import TeamSectionSEO from "@/components/seo/team-section-seo"
-import ServicesSectionSEO from "@/components/seo/services-section-seo"
-import GallerySectionSEO from "@/components/seo/gallery-section-seo"
-import ContactSectionSEO from "@/components/seo/contact-section-seo"
-import FAQSchema from "@/components/seo/faq-schema"
-import BreadcrumbSchema from "@/components/seo/breadcrumb-schema"
-import EnhancedLocalBusinessSchema from "@/components/seo/enhanced-local-business-schema"
-import VoiceSearchOptimization from "@/components/seo/voice-search-optimization"
-import SpeakableSchema from "@/components/seo/speakable-schema"
-import HreflangTags from "@/components/seo/hreflang-tags"
-import TechnicalSEO from "@/components/seo/technical-seo"
-import SocialVerification from "@/components/seo/social-verification"
-import EventSchema from "@/components/seo/event-schema"
-import ProductSchema from "@/components/seo/product-schema"
-import VideoSchema from "@/components/seo/video-schema"
-import ArticleSchema from "@/components/seo/article-schema"
-import JobPostingSchema from "@/components/seo/job-posting-schema"
-import WebsiteSchema from "@/components/seo/website-schema"
-import OrganizationSchema from "@/components/seo/organization-schema"
-import ImageOptimization from "@/components/seo/image-optimization"
-import PerformanceOptimization from "@/components/seo/performance-optimization"
-import MobileOptimization from "@/components/seo/mobile-optimization"
-import AnalyticsIntegration from "@/components/seo/analytics-integration"
-
-// Dynamically import ParallaxHero to prevent SSR hydration issues
-const ParallaxHero = dynamic(() => import("@/components/parallax-hero"), {
-  ssr: false,
-  loading: () => (
-    <section className="relative h-[85vh] w-full overflow-hidden bg-gray-900">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 z-10" />
-      <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-white">
-        <div className="mb-2 tracking-wider text-amber-300 font-medium text-sm sm:text-base">
-          Premium Barber Shop
-        </div>
-        <h1 className="mb-4 text-3xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          Affes Salong – Est. 1991
-        </h1>
-        <p className="mb-8 sm:mb-10 max-w-2xl text-lg sm:text-xl md:text-2xl">
-          Din Premium Salon för Skräddarsydda Lösningar
-        </p>
-      </div>
-    </section>
-  ),
-})
-
-// Define the services and gallery images outside the component
-// to avoid any rendering issues
-
-// Update the enhancedServices array to ensure student services are only in the student category
-const enhancedServices = [
+// Define the services
+const services = [
   {
     id: "haircut-beard",
     name: "Klippning & Skäggtrimning",
@@ -156,8 +103,8 @@ const enhancedServices = [
   },
 ]
 
-// Create a unique gallery images array by checking for duplicate src values
-const allGalleryImages = [
+// Gallery images
+const galleryImages = [
   { src: "/images/gallery/client1.jpeg", alt: "Herrklippning med fade hos Affes Salong i Jönköping" },
   { src: "/images/gallery/client2.jpeg", alt: "Stilig herrfrisyr från Affes Salong" },
   { src: "/images/gallery/client3.jpeg", alt: "Modern herrklippning i Jönköping" },
@@ -183,79 +130,17 @@ const allGalleryImages = [
   { src: "/images/gallery/client23.jpeg", alt: "Elegant herrfrisyr med sidoparti från Affes Salong" },
 ]
 
-// Filter out duplicates by checking the src property
-const uniqueGalleryImages = allGalleryImages.filter(
-  (image, index, self) => index === self.findIndex((t) => t.src === image.src),
-)
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* SEO Components */}
-      <AboutSectionSEO />
-      <TeamSectionSEO />
-      <ServicesSectionSEO services={enhancedServices} />
-      <GallerySectionSEO images={uniqueGalleryImages} />
-      <ContactSectionSEO />
-
-      {/* Advanced SEO Components */}
-      <FAQSchema />
-      <BreadcrumbSchema />
-      <EnhancedLocalBusinessSchema />
-      <SpeakableSchema />
-      <HreflangTags />
-      <TechnicalSEO />
-      <SocialVerification />
-      <EventSchema />
-      <ProductSchema />
-      <VideoSchema />
-      <ArticleSchema />
-      <JobPostingSchema />
-      <WebsiteSchema />
-      <OrganizationSchema />
-      <InternalLinks />
-      <VoiceSearchOptimization />
-      <ImageOptimization />
-      <PerformanceOptimization />
-      <MobileOptimization />
-      <AnalyticsIntegration />
-
-      {/* Hero Section */}
-      <ParallaxHero />
-
-      {/* Combined Welcome and About (Hos Oss) */}
-      <ContentOptimization keyword="frisörsalong jönköping" heading="Om Affes Salong">
-        <AboutSection />
-      </ContentOptimization>
-
-      {/* Vårt Team */}
-      <ContentOptimization keyword="frisörer jönköping" heading="Vårt Team">
-        <TeamSection />
-      </ContentOptimization>
-
-      {/* Tjänster */}
-      <ContentOptimization keyword="herrklippning jönköping" heading="Våra Tjänster">
-        <ServicesSection services={enhancedServices} />
-      </ContentOptimization>
-
-      {/* Foto Galleri */}
-      <ContentOptimization keyword="frisyrer jönköping" heading="Galleri">
-        <GallerySection images={uniqueGalleryImages} />
-      </ContentOptimization>
-
-      {/* Combined Öppettider and Kontakt Section */}
-      <ContentOptimization keyword="frisör jönköping kontakt" heading="Kontakta Oss">
-        <ContactSection />
-      </ContentOptimization>
-
-      {/* Footer - Now using our updated component */}
+    <div className="min-h-screen">
+      <Header />
+      <HeroSection />
+      <AboutSection />
+      <TeamSection />
+      <ServicesSection services={services} />
+      <GallerySection images={galleryImages} />
+      <ContactSection />
       <Footer />
-
-      {/* Cookie Consent */}
-      <CookieConsent />
-
-      {/* PWA Installation Notification */}
-      <PWANotification />
     </div>
   )
 }
