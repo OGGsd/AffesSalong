@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "se.axiestudio.affessalong.twa",
+      "sha256_cert_fingerprints": [
+        "69:BA:8C:0E:F6:A1:AC:E9:60:B0:E7:B9:E2:B6:71:AE:EC:7B:82:51:7D:1A:ED:AB:96:F1:13:9A:C6:91:AA:96"
+      ]
+    }
+  }
+]
