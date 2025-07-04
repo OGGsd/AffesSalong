@@ -1,0 +1,13 @@
+# Redirect from Axiestudio.se to the main Affes Salong website
+https://axiestudio.se/affessalong/* https://affessalong.axiestudio.se/:splat 301!
+https://www.axiestudio.se/affessalong/* https://affessalong.axiestudio.se/:splat 301!
+
+# Redirect section-specific URLs to the main website with hash
+https://affessalong.axiestudio.se/om-oss https://affessalong.axiestudio.se/#om-oss 301!
+https://affessalong.axiestudio.se/team https://affessalong.axiestudio.se/#team 301!
+https://affessalong.axiestudio.se/tjanster https://affessalong.axiestudio.se/#tjanster 301!
+https://affessalong.axiestudio.se/galleri https://affessalong.axiestudio.se/#galleri 301!
+https://affessalong.axiestudio.se/kontakt https://affessalong.axiestudio.se/#kontakt 301!
+
+# Redirect old URLs to new URLs (if applicable)
+/old-page /new-page 301!

@@ -1,0 +1,211 @@
+# Affes Salong - Comprehensive Robots.txt
+# Last updated: 2025-05-03
+# Website: https://affessalong.axiestudio.se
+
+# Default rule for all user agents
+User-agent: *
+Allow: /
+
+# Sitemap declarations
+Sitemap: https://affessalong.axiestudio.se/sitemap-index.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-main.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-images.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-services.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-videos.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-mobile.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-news.xml
+Sitemap: https://affessalong.axiestudio.se/sitemap-hreflang.xml
+
+# Disallow admin and system directories
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-json/
+Disallow: /_next/static/
+Disallow: /_vercel/
+Disallow: /api/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /includes/
+Disallow: /cache/
+Disallow: /logs/
+
+# Disallow specific file types
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+Disallow: /*.md$
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.tar$
+Disallow: /*.gz$
+Disallow: /*.zip$
+Disallow: /*.bak$
+Disallow: /*.swp$
+Disallow: /*.sql.gz$
+Disallow: /*.sql.bz2$
+Disallow: /*.env$
+
+# Allow CSS, JS, and image files
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
+
+# Specific instructions for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+# Allow Google to index JavaScript and CSS
+Allow: /*.js$
+Allow: /*.css$
+
+# Specific instructions for Google Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /galleri/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Crawl-delay: 1
+
+# Specific instructions for Google Mobile
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Specific instructions for Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Specific instructions for DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Specific instructions for Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Specific instructions for Facebook
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for Twitter
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for LinkedIn
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for Pinterest
+User-agent: Pinterest
+Allow: /
+Crawl-delay: 1
+
+# Block AI crawlers from scraping content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+# Block archive.org
+User-agent: archive.org_bot
+Disallow: /
+
+# Block content scrapers
+User-agent: Scrapy
+Disallow: /
+
+User-agent: ScraperAPI
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: rogerbot
+Disallow: /
+
+# Allow specific directories for all bots
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /favicon.ico
+Allow: /manifest.json
+
+# Host directive (unofficial but supported by some crawlers)
+Host: affessalong.axiestudio.se
+
+# Crawl-delay directive for all other bots
+Crawl-delay: 10
+
+# Clean-param directive (unofficial but supported by Yandex)
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
+
+# Noindex directive (unofficial but supported by some crawlers)
+Noindex: /duplicate-content/
+Noindex: /temporary-content/
+Noindex: /outdated-content/

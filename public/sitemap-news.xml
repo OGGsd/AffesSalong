@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- About Us Page with News -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/om-oss</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Affes Salong</news:name>
+        <news:language>sv</news:language>
+      </news:publication>
+      <news:publication_date>2025-05-01T12:00:00+01:00</news:publication_date>
+      <news:title>Om Affes Salong - Jönköpings Premiumfrisör</news:title>
+    </news:news>
+  </url>
+  
+  <!-- News Article 1 -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/nyheter/nya-tjanster-2025</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Affes Salong</news:name>
+        <news:language>sv</news:language>
+      </news:publication>
+      <news:publication_date>2025-04-15T10:00:00+01:00</news:publication_date>
+      <news:title>Nya tjänster hos Affes Salong 2025</news:title>
+      <news:keywords>frisör, nya tjänster, herrfrisör, jönköping</news:keywords>
+    </news:news>
+  </url>
+  
+  <!-- News Article 2 -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/nyheter/sommar-kampanj-2025</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Affes Salong</news:name>
+        <news:language>sv</news:language>
+      </news:publication>
+      <news:publication_date>2025-05-01T10:00:00+01:00</news:publication_date>
+      <news:title>Sommarkampanj 2025 - Specialerbjudanden hos Affes Salong</news:title>
+      <news:keywords>sommar, kampanj, rabatt, frisör, jönköping</news:keywords>
+    </news:news>
+  </url>
+</urlset>

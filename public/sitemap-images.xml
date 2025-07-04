@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Gallery page with all images -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/galleri</loc>
+    
+    <!-- Gallery image 1 -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/gallery/client1.jpeg</image:loc>
+      <image:title>Herrklippning med fade hos Affes Salong i Jönköping</image:title>
+      <image:caption>Herrklippning med fade hos Affes Salong i Jönköping</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Gallery image 2 -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/gallery/client2.jpeg</image:loc>
+      <image:title>Stilig herrfrisyr från Affes Salong</image:title>
+      <image:caption>Stilig herrfrisyr från Affes Salong</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Gallery image 3 -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/gallery/client3.jpeg</image:loc>
+      <image:title>Modern skäggvård hos Affes Salong</image:title>
+      <image:caption>Modern skäggvård hos Affes Salong</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Additional gallery images would be listed here -->
+  </url>
+  
+  <!-- Team page with team member images -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/team</loc>
+    
+    <!-- Team member 1 -->
+    <image:image>
+      <image:loc>https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DB7553E4-8856-4C76-B3CC-700B3119C505-6325-0000043A697266E8.jpg-zAsnSlcoN5BPNAHFd4Um7QOtWGB09r.jpeg</image:loc>
+      <image:title>Fady - Frisör på Affes Salong</image:title>
+      <image:caption>Fady är expert på herrklippning och skäggvård</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Team member 2 -->
+    <image:image>
+      <image:loc>https://hebbkx1anhila5yf.public.blob.vercel-storage.com/437A1D0F-5B16-47DC-9A33-079B830D638D-6325-0000043AAF1B22A7.jpg-3wJRhhKA2o05kDjduqLnPIrHLcsLAk.jpeg</image:loc>
+      <image:title>Adnan - Frisör på Affes Salong</image:title>
+      <image:caption>Adnan är specialist på moderna frisyrer</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Additional team members would be listed here -->
+  </url>
+  
+  <!-- Services page with service images -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster</loc>
+    
+    <!-- Service image 1 -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/services/haircut.jpg</image:loc>
+      <image:title>Herrklippning hos Affes Salong</image:title>
+      <image:caption>Professionell herrklippning hos Affes Salong i Jönköping</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Service image 2 -->
+    <image:image>
+      <image:loc>https://affessalong.axiestudio.se/images/services/beard.jpg</image:loc>
+      <image:title>Skäggvård hos Affes Salong</image:title>
+      <image:caption>Professionell skäggvård hos Affes Salong i Jönköping</image:caption>
+      <image:geo_location>Jönköping, Sweden</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by/4.0/</image:license>
+    </image:image>
+    
+    <!-- Additional service images would be listed here -->
+  </url>
+</urlset>

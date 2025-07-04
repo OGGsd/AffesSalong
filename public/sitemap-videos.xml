@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Gallery page with video tour -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/galleri</loc>
+    <video:video>
+      <video:thumbnail_loc>https://affessalong.axiestudio.se/images/gallery/thumbnail.jpg</video:thumbnail_loc>
+      <video:title>Affes Salong - Galleri av våra frisyrer</video:title>
+      <video:description>Se våra senaste frisyrer och klippningar från Affes Salong i Jönköping</video:description>
+      <video:content_loc>https://affessalong.axiestudio.se/videos/gallery-tour.mp4</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/example</video:player_loc>
+      <video:duration>120</video:duration>
+      <video:publication_date>2025-04-01T12:00:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+      <video:tag>frisör</video:tag>
+      <video:tag>herrfrisör</video:tag>
+      <video:tag>jönköping</video:tag>
+      <video:tag>affes salong</video:tag>
+      <video:category>Beauty</video:category>
+      <video:uploader info="https://affessalong.axiestudio.se">Affes Salong</video:uploader>
+      <video:platform>web mobile</video:platform>
+      <video:restriction relationship="allow">SE</video:restriction>
+      <video:price currency="SEK">0</video:price>
+      <video:requires_subscription>no</video:requires_subscription>
+    </video:video>
+  </url>
+  
+  <!-- Services page with haircut tutorial -->
+  <url>
+    <loc>https://affessalong.axiestudio.se/tjanster</loc>
+    <video:video>
+      <video:thumbnail_loc>https://affessalong.axiestudio.se/images/services/haircut-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>Herrklippning hos Affes Salong - Steg för steg</video:title>
+      <video:description>Se hur våra professionella frisörer utför en herrklippning steg för steg</video:description>
+      <video:content_loc>https://affessalong.axiestudio.se/videos/haircut-tutorial.mp4</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/example2</video:player_loc>
+      <video:duration>300</video:duration>
+      <video:publication_date>2025-04-15T12:00:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+      <video:tag>herrklippning</video:tag>
+      <video:tag>tutorial</video:tag>
+      <video:tag>frisör</video:tag>
+      <video:tag>jönköping</video:tag>
+      <video:category>Beauty</video:category>
+      <video:uploader info="https://affessalong.axiestudio.se">Affes Salong</video:uploader>
+      <video:platform>web mobile</video:platform>
+      <video:restriction relationship="allow">SE</video:restriction>
+      <video:price currency="SEK">0</video:price>
+      <video:requires_subscription>no</video:requires_subscription>
+    </video:video>
+  </url>
+</urlset>
